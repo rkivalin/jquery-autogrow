@@ -1,4 +1,8 @@
 do ($ = Zepto ? jQuery) ->
+  inherit = [
+    'font-family', 'font-size', 'font-variant'
+    'font-weight', 'font-stretch', 'letter-spacing']
+
   $.fn.autoGrow = (options) ->
 
     options = $.extend({
@@ -11,25 +15,20 @@ do ($ = Zepto ? jQuery) ->
       maxWidth = options.maxWidth
       minWidth = options.minWidth or $(this).width()
       input = $(this)
-      testSubject = $('<pre/>').css
+      styles =
         position: 'absolute'
         top: -9999
         left: -9999
         width: 'auto'
-        fontFamily: input.css('fontFamily')
-        fontSize: input.css('fontSize')
-        fontWeight: input.css('fontWeight')
-        letterSpacing: input.css('letterSpacing')
-        whiteSpace: 'nowrap'
+        visibility: 'hidden'
+      styles[prop] = input.css(prop) for prop in inherit
+      testSubject = $('<pre/>').css(styles)
       check = ->
         testSubject.text(input.val())
-        testerWidth = testSubject.width()
-        newWidth = testerWidth + options.comfortZone
+        newWidth = testSubject.width() + options.comfortZone
         newWidth = maxWidth if newWidth > maxWidth
         newWidth = minWidth if newWidth < minWidth
-        currentWidth = input.width()
-
-        input.width(newWidth) if currentWidth != newWidth
+        input.width(newWidth)
 
       testSubject.insertAfter(input)
       $(this).bind('input', check)

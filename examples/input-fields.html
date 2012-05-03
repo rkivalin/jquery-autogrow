@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <title>jQuery autoGrow plugin example</title>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/zepto/0.8/zepto.min.js"></script>
+  <script type="text/javascript" src="../lib/jquery-autogrow.js"></script>
+  <style type="text/css">
+
+#different-font {
+  font-family: serif;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+#limited-width {
+  max-width: 250px;
+  min-width: 50px;
+}
+
+  </style>
+  <script type="text/javascript">
+
+$(function () {
+
+  $('#input-field').autoGrow();
+  $('#different-font').autoGrow();
+  $('#limited-width').autoGrow();
+
+});
+
+  </script>
+</head>
+<body>
+<h1>jQuery autoGrow plugin</h1>
+<h2>Input field</h2>
+<input id="input-field" type="text" />
+<h2>Different font</h2>
+<input id="different-font" type="text" />
+<h2>Limited width</h2>
+<p>Use css properties min-width and max-width</p>
+<input id="limited-width" type="text" />
+</body>
+</html>

@@ -5,16 +5,12 @@ do ($ = Zepto ? jQuery) ->
 
   $.fn.autoGrow = (options) ->
 
-    options = $.extend({
-      maxWidth: 1000
-      minWidth: 0
-      comfortZone: 70
-    }, options)
+    comfortZone = options?.comfortZone ? 70
 
     this.each ->
-      maxWidth = options.maxWidth
-      minWidth = options.minWidth or $(this).width()
       input = $(this)
+      if input.css('min-width') == '0px'
+        input.css('min-width', "#{input.width()}px")
       styles =
         position: 'absolute'
         top: -9999
@@ -25,10 +21,7 @@ do ($ = Zepto ? jQuery) ->
       testSubject = $('<pre/>').css(styles)
       check = ->
         testSubject.text(input.val())
-        newWidth = testSubject.width() + options.comfortZone
-        newWidth = maxWidth if newWidth > maxWidth
-        newWidth = minWidth if newWidth < minWidth
-        input.width(newWidth)
+        input.width(testSubject.width() + comfortZone)
 
       testSubject.insertAfter(input)
-      $(this).bind('input', check)
+      input.bind('input', check)

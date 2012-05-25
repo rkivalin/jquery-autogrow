@@ -12,8 +12,26 @@ Usage
 To autoresize text field use:
 
     $('#myTextField').autoGrow({
-      comfortZone: 70
+      comfortZone: 70 // default value
     });
+    // or just
+    $('#myTextField').autoGrow(70);
+
+When you update styles that change text size use:
+
+    $('#myTextField').autoGrow();
+
+You can also update comfort zone:
+
+    $('#myTextField').autoGrow(newComfortZone);
+
+To disable autogrowing:
+
+    $('#myTextField').autoGrow('remove');
+    // or
+    $('#myTextField').autoGrow(false);
+    // or
+    $('#myTextField').autoGrow({remove: true});
 
 
 Limiting width
@@ -22,3 +40,15 @@ Limiting width
 To limit width use css properties `min-width` and `max-width`.
 When `min-width` is set to `0px` (default browser value),
 minimum width is limited to current width.
+
+
+Animating
+---------
+
+If you wish smoothly resize textfields use following styles:
+
+    #myTextField {
+      transition: width 100ms linear;
+    }
+
+Do not forget to add vendor prefixes for transition.

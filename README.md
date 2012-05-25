@@ -11,28 +11,32 @@ Usage
 
 To autoresize text field use:
 
-    $('#myTextField').autoGrow({
-      comfortZone: 70 // default value
-    });
-    // or just
-    $('#myTextField').autoGrow(70);
+```js
+$('#myTextField').autoGrow({
+  comfortZone: 70 // default value
+});
+// or just
+$('#myTextField').autoGrow(70);
+```
 
 When you update styles that change text size use:
-
-    $('#myTextField').autoGrow();
+```js
+$('#myTextField').autoGrow();
+```
 
 You can also update comfort zone:
-
-    $('#myTextField').autoGrow(newComfortZone);
+```js
+$('#myTextField').autoGrow(newComfortZone);
+```
 
 To disable autogrowing:
-
-    $('#myTextField').autoGrow('remove');
-    // or
-    $('#myTextField').autoGrow(false);
-    // or
-    $('#myTextField').autoGrow({remove: true});
-
+```js
+$('#myTextField').autoGrow('remove');
+// or
+$('#myTextField').autoGrow(false);
+// or
+$('#myTextField').autoGrow({remove: true});
+```
 
 Limiting width
 --------------
@@ -46,9 +50,10 @@ Animating
 ---------
 
 If you wish smoothly resize textfields use following styles:
-
-    #myTextField {
-      transition: width 100ms linear;
-    }
+```css
+#myTextField {
+  transition: width 100ms linear;
+}
+```
 
 Do not forget to add vendor prefixes for transition.

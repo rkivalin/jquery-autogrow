@@ -9,7 +9,8 @@ do ($ = Zepto ? jQuery) ->
 
     this.each ->
       input = $(this)
-      testSubject = input.next().filter('pre.autogrow')
+      pre_id = Math.floor((1 + Math.random()) * 0x10000000).toString(16)
+      testSubject = $('#' + pre_id)
 
       if testSubject.length and remove # unbind
         input.unbind('input.autogrow')
@@ -40,8 +41,8 @@ do ($ = Zepto ? jQuery) ->
           visibility: 'hidden'
         styles[prop] = input.css(prop) for prop in inherit
 
-        testSubject = $('<pre class="autogrow"/>').css(styles)
-        testSubject.insertAfter(input)
+        testSubject = $('<pre id="'+ pre_id +'" class="autogrow"/>').css(styles)
+        testSubject.appendTo('body')
 
         cz = comfortZone ? 70
         check = ->

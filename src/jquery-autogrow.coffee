@@ -9,7 +9,9 @@ do ($ = Zepto ? jQuery) ->
 
     this.each ->
       input = $(this)
-      pre_id = Math.floor((1 + Math.random()) * 0x10000000).toString(16)
+      input_pre_id = input.data('autogrow-id')
+      pre_id = input_pre_id || Math.floor((1 + Math.random()) * 0x10000000).toString(16)
+      input.data('autogrow-id', pre_id)
       testSubject = $('#' + pre_id)
 
       if testSubject.length and remove # unbind

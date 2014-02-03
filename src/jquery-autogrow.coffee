@@ -43,7 +43,7 @@ do ($ = Zepto ? jQuery) ->
           visibility: 'hidden'
         styles[prop] = input.css(prop) for prop in inherit
 
-        testSubject = $('<pre id="'+ pre_id +'" class="autogrow"/>').css(styles)
+        testSubject = $('<pre id="' + pre_id + '" class="autogrow"/>').css(styles)
         testSubject.appendTo('body')
 
         cz = comfortZone ? 70
